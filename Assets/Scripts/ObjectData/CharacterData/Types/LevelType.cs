@@ -1,0 +1,42 @@
+namespace ObjectData.CharacterData.Types
+{
+    public enum LevelType
+    {
+        One = 0,
+        Two = 600,
+        Three = 2400,
+        Four = 9600,
+        Five = 38400,
+        Six = 153600,
+        Seven = 307200,
+        Eight = 1228800,
+        Nine = 3686400,
+        Ten = 11059200,
+        Eleven = 44236800,
+        Twelve = 32423,
+        Thirteen = 245435,
+        Fourteen = 32423,
+        Fifteen = 43252435,
+        Sixteen = 3241234,
+        Seventeen = 23432,
+        Eighteen = 243,
+        Nineteen = 2342,
+        Twenty = 234,
+        TwentyOne = 234,
+        TwentyTwo = 234,
+        TwentyThree = 234,
+        TwentyFour = 234,
+        TwentyFive = 234,
+        TwentySix = 234,
+        TwentySeven = 234,
+        TwentyEight = 234,
+        TwentyNine = 234,
+        Thirty = 234,
+
+        ThirtyOne = 234,
+        ThirtyTwo = 234,  
+        ThirtyThree = 234,  
+        ThirtyFour = 234,  
+        ThirtyFive = 234,         
+    }
+}

@@ -1,0 +1,438 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3430618290603621980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3425447663106851466}
+  - component: {fileID: 3454148098103806814}
+  - component: {fileID: 3443897985577245746}
+  - component: {fileID: 3418631591116470080}
+  - component: {fileID: 3429544345998707370}
+  m_Layer: 0
+  m_Name: Rock_1_13 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3425447663106851466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430618290603621980}
+  m_LocalRotation: {x: -1.7763568e-15, y: -0.74320495, z: -1.7763568e-15, w: 0.6690638}
+  m_LocalPosition: {x: -2.1900716, y: 0, z: 2.8463345}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3454148098103806814
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430618290603621980}
+  m_Mesh: {fileID: 0}
+--- !u!23 &3443897985577245746
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430618290603621980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ddd69a6bfc7cd4b4caa3ff271fb62675, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &3418631591116470080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430618290603621980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2405155, y: 2.072434, z: 1.9188433}
+  m_Center: {x: 0.00000011920929, y: 1.036217, z: 0}
+--- !u!114 &3429544345998707370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430618290603621980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514272446055d254484f1c3824cd8188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUnwrappingNormalTolerance: 30
+  useUnifiedScaling: 0
+  _topScale: {x: 1, y: 1}
+  _bottomScale: {x: 1, y: 1}
+  _leftScale: {x: 1, y: 1}
+  _rightScale: {x: 1, y: 1}
+  _frontScale: {x: 1, y: 1}
+  _backScale: {x: 1, y: 1}
+  useUnifiedOffset: 0
+  _topOffset: {x: 0, y: 0}
+  _bottomOffset: {x: 0, y: 0}
+  _leftOffset: {x: 0, y: 0}
+  _rightOffset: {x: 0, y: 0}
+  _frontOffset: {x: 0, y: 0}
+  _backOffset: {x: 0, y: 0}
+  _topRotation: 0
+  _bottomRotation: 0
+  _leftRotation: 0
+  _rightRotation: 0
+  _frontRotation: 0
+  _backRotation: 0
+  _topMaterialIndex: 0
+  _bottomMaterialIndex: 0
+  _leftMaterialIndex: 0
+  _rightMaterialIndex: 0
+  _frontMaterialIndex: 0
+  _backMaterialIndex: 0
+  _topFlipX: 0
+  _topFlipY: 0
+  _bottomFlipX: 0
+  _bottomFlipY: 0
+  _leftFlipX: 0
+  _leftFlipY: 0
+  _rightFlipX: 0
+  _rightFlipY: 0
+  _frontFlipX: 0
+  _frontFlipY: 0
+  _backFlipX: 0
+  _backFlipY: 0
+  _useBakedMesh: 0
+  _faceUnwrapData:
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 000000000100000002000000
+    normals:
+    - {x: -0.5073391, y: 0.23120125, z: -0.83015233}
+    averageNormal: {x: -0.5073391, y: 0.23120125, z: -0.83015233}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 030000000400000005000000
+    normals:
+    - {x: -0.66947716, y: 0.22673166, z: -0.70738477}
+    averageNormal: {x: -0.66947716, y: 0.22673166, z: -0.70738477}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 060000000700000008000000
+    normals:
+    - {x: -0.46938476, y: 0.34123912, z: -0.8143917}
+    averageNormal: {x: -0.46938476, y: 0.34123912, z: -0.8143917}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 090000000a0000000b000000
+    normals:
+    - {x: -0.19932115, y: 0.028348545, z: -0.9795241}
+    averageNormal: {x: -0.19932115, y: 0.028348545, z: -0.9795241}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 0c0000000d0000000e000000
+    normals:
+    - {x: -0.6192512, y: -0.076172605, z: -0.7814894}
+    averageNormal: {x: -0.6192512, y: -0.076172605, z: -0.7814894}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 0f0000001000000011000000
+    normals:
+    - {x: -0.5356758, y: -0.13526955, z: -0.8335188}
+    averageNormal: {x: -0.5356758, y: -0.13526955, z: -0.8335188}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 120000001300000014000000
+    normals:
+    - {x: -0.20967437, y: -0.01917466, z: -0.97758317}
+    averageNormal: {x: -0.20967437, y: -0.01917466, z: -0.97758317}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 150000001600000017000000
+    normals:
+    - {x: -0.28795153, y: 0.03596866, z: -0.95696926}
+    averageNormal: {x: -0.28795153, y: 0.03596866, z: -0.95696926}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 18000000190000001a000000
+    normals:
+    - {x: -0.6528629, y: 0.18309738, z: -0.7350139}
+    averageNormal: {x: -0.6528629, y: 0.18309738, z: -0.7350139}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 1b0000001c0000001d000000
+    normals:
+    - {x: -0.651747, y: 0.26333433, z: -0.7112531}
+    averageNormal: {x: -0.651747, y: 0.26333433, z: -0.7112531}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 1e0000001f00000020000000
+    normals:
+    - {x: -0.6753767, y: -0.34582233, z: -0.65136236}
+    averageNormal: {x: -0.6753767, y: -0.34582233, z: -0.65136236}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 210000002200000023000000
+    normals:
+    - {x: 0.7713688, y: 0.6067725, z: 0.19187784}
+    averageNormal: {x: 0.7713688, y: 0.6067725, z: 0.19187784}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 240000002500000026000000
+    normals:
+    - {x: 0.884669, y: 0.4435388, z: 0.14364618}
+    averageNormal: {x: 0.884669, y: 0.4435388, z: 0.14364618}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 270000002800000029000000
+    normals:
+    - {x: 0.9482282, y: 0.23032469, z: 0.21866357}
+    averageNormal: {x: 0.9482282, y: 0.23032469, z: 0.21866357}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 2a0000002b0000002c000000
+    normals:
+    - {x: 0.9190518, y: 0.38167286, z: -0.098333694}
+    averageNormal: {x: 0.9190518, y: 0.38167286, z: -0.098333694}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 2d0000002e0000002f000000
+    normals:
+    - {x: 0.91187716, y: 0.37678203, z: -0.16283534}
+    averageNormal: {x: 0.91187716, y: 0.37678203, z: -0.16283534}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 300000003100000032000000
+    normals:
+    - {x: 0.9790861, y: -0.09970739, z: -0.17733853}
+    averageNormal: {x: 0.9790861, y: -0.09970739, z: -0.17733853}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 330000003400000035000000
+    normals:
+    - {x: 0.934457, y: -0.05448137, z: 0.35188326}
+    averageNormal: {x: 0.934457, y: -0.05448137, z: 0.35188326}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 360000003700000038000000
+    normals:
+    - {x: 0.016195737, y: 0.51134247, z: 0.8592243}
+    averageNormal: {x: 0.016195737, y: 0.51134247, z: 0.8592243}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 390000003a0000003b000000
+    normals:
+    - {x: 0.36548126, y: 0.5546024, z: 0.74755573}
+    averageNormal: {x: 0.36548126, y: 0.5546024, z: 0.74755573}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 3c0000003d0000003e000000
+    normals:
+    - {x: 0.12885842, y: 0.7960718, z: 0.59132487}
+    averageNormal: {x: 0.12885842, y: 0.7960718, z: 0.59132487}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 3f0000004000000041000000
+    normals:
+    - {x: 0.2935496, y: 0.21337958, z: 0.931825}
+    averageNormal: {x: 0.2935496, y: 0.21337958, z: 0.931825}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 420000004300000044000000
+    normals:
+    - {x: 0.2261699, y: 0.33761144, z: 0.9137099}
+    averageNormal: {x: 0.2261699, y: 0.33761144, z: 0.9137099}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 450000004600000047000000
+    normals:
+    - {x: -0.3301173, y: 0.37829193, z: 0.86482245}
+    averageNormal: {x: -0.3301173, y: 0.37829193, z: 0.86482245}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 48000000490000004a000000480000004b00000049000000
+    normals:
+    - {x: -0.34544766, y: 0.32123807, z: 0.8817437}
+    - {x: -0.33551154, y: 0.3153471, z: 0.88749933}
+    averageNormal: {x: -0.3404796, y: 0.3182926, z: 0.8846215}
+    initialized: 1
+  - uvScale: {x: 1, y: 1}
+    uvOffset: {x: 0, y: 0}
+    rotation: 0
+    flipUVx: 0
+    flipUVy: 0
+    materialIndex: 0
+    triangles: 4c0000004d0000004e000000
+    normals:
+    - {x: -0.65231687, y: -0.46001604, z: 0.6023853}
+    averageNormal: {x: -0.65231687, y: -0.46001604, z: 0.6023853}
+    initialized: 1
+  _unwrapMethod: 1
+  freshMesh: 0
