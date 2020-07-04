@@ -56,6 +56,7 @@ public class CharacterAttack : MonoBehaviour
 
     public int CalculateDamage(System.Random rnd, CharacterStatistics targetStatistics, CharacterStatistics playerStatistics)
     {
+        
         playerStatistics.Player.ModifierStats.BaseMeleeDamage = 5;
         int armor = 0;
         if(targetStatistics.Player.ModifierStats.Armor > 0)

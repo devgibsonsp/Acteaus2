@@ -19,6 +19,8 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
     #region Component References
         private CharacterStatistics PlayerStatistics { get; set; }
         private CharacterStatistics TargetStatistics { get; set; }
+        // starting to hate this...
+        private CharacterAnimation TargetAnimationEvents { get; set; }
         private Camera Cam { get; set; }
         private NavMeshAgent Agent { get; set; }
         private Animator Anim { get; set; }
@@ -30,6 +32,9 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
         private CharacterAnimation AnimationEvents { get; set; }
         private CharacterAttack AttackEvents { get; set;}
     #endregion
+
+
+    System.Random rnd;
 
     // temp
     public bool isNPC;
@@ -46,6 +51,9 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
 
     private float ActionTime { get; set; }
 
+    private bool testBool = false;
+
+    public int currentHealth;
 
     private bool HealthCheck()
     {
@@ -55,8 +63,26 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
         }
         else
         {
+            // If the player's health has decreased, run animation
+            if(PlayerStatistics.Player.BarStats.Health < currentHealth)
+            {
+                AnimationEvents.PlayerTakeDamageAnimation(true);
+            }
+            else
+            {
+                AnimationEvents.PlayerTakeDamageAnimation(false);
+            }
+
+            if(PlayerStatistics.Player.BarStats.Health != currentHealth)
+            {
+                currentHealth = PlayerStatistics.Player.BarStats.Health;
+            }
+
+
             return true;
         }
+
+
 
     }
 
@@ -65,7 +91,10 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Awake()
     {
+        
+        rnd = new System.Random();
         InitializeComponents();
+        currentHealth = PlayerStatistics.Player.BarStats.Health;
     }
     
 
@@ -108,6 +137,7 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
                 }
                 else if(AttackEvents.CalculateTargetBlock(rnd, TargetStatistics, PlayerStatistics, target))
                 {
+                    TargetAnimationEvents.PlayerBlockAnimation(true);
                     Debug.Log("BLOCK!!!");
                 }
                 else
@@ -118,24 +148,10 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
                     Debug.Log(AttackEvents.CalculateDamage(rnd,TargetStatistics, PlayerStatistics) + "Damage!");
                 }
 
-                // Calculate character damage
-
                 
                 IsHitting = false;
+
             }
-        }
-    }
-
-
-    private void PlayerAnimationCheck()
-    {
-        if (Agent.velocity != Vector3.zero)
-        {
-            Anim.SetBool("isRunning",true);
-        }
-        else
-        {
-            Anim.SetBool("isRunning",false);
         }
     }
 
@@ -143,12 +159,17 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        if (!photonView.IsMine)
+        if (!isNPC && !photonView.IsMine)
         {
             return;
         }
 
         AnimationEvents.PlayerRunAnimation(Agent);
+
+        //if(Input.GetKeyDown(KeyCode.O))
+        //{
+        //    AnimationEvents.PlayerAttackAnimation(rnd, false);
+        //}
 
         if(HealthCheck())
         {
@@ -157,13 +178,15 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
                 if(IsFollowing) 
                 {
                     // If the distance is small enough, initiate an attack **#
-                    if(Vector3.Distance(this.gameObject.transform.position,target.position) < 1.5f) 
+                    if(Vector3.Distance(this.gameObject.transform.position,target.position) < 2.5f) 
                     {
                         // Perform the sequnce, delays, calculations, etc associated with melee attack
                         PerformAttackEvent();
+                        AnimationEvents.PlayerAttackAnimation(rnd, true);
                     }
                     else
                     {
+                        AnimationEvents.PlayerAttackAnimation(rnd, false);
                         MovementEvents.CharacterFollow(target);
                     }
                 }
@@ -178,11 +201,13 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
                             Debug.Log("attack follow");
                             target = hit.transform;
                             TargetStatistics = target.GetComponent<CharacterStatistics>();
+                            TargetAnimationEvents = target.GetComponent<CharacterAnimation>();
                             IsFollowing = true;
                             Agent.stoppingDistance = ACTION_STOP_DIST;
                         }
                         else 
                         {
+                            AnimationEvents.PlayerAttackAnimation(rnd, false);
                             IsFollowing = false;
                             MovementEvents.CharacterMove(hit, Cam);
                             Agent.stoppingDistance = NORMAL_STOP_DIST;
