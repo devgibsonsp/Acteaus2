@@ -13,7 +13,7 @@ namespace AutoTiling {
 
 		public static Camera sceneCamera;
 		public static AutoTextureTiling selected;
-		public static List<Vector3> currentSelectedTriangles;
+		public static List<Vector3> currentSelectedTriangles = new List<Vector3>();
 		public static Vector3 currentSelectedTriangleNormal;
 		public static Direction currentSelectedFace;
         public static int currentSelectedFaceIndex;
@@ -21,12 +21,57 @@ namespace AutoTiling {
 		public static Tool lastUsedTool;
 		public static Tool currentTextureTool = Tool.None;
 
-		private static Texture unityIcon;
-		private static Texture moveIcon;
-		private static Texture scaleIcon;
-		private static Texture rotateIcon;
+		private static Texture unityIcon {
+            get {
+                if (!_unityIcon) {
+                    _unityIcon = LoadTextureWithName("unity-icon");
+                }
+                return _unityIcon;
+            }
+            set {
+                _unityIcon = value;
+            }
+        }
+		private static Texture moveIcon {
+            get {
+                if (!_moveIcon) {
+                    _moveIcon = LoadTextureWithName("move-icon");
+                }
+                return _moveIcon;
+            }
+            set {
+                _moveIcon = value;
+            }
+        }
+        private static Texture scaleIcon {
+            get {
+                if (!_scaleIcon) {
+                    _scaleIcon = LoadTextureWithName("scale-icon");
+                }
+                return _scaleIcon;
+            }
+            set {
+                _scaleIcon = value;
+            }
+        }
+        private static Texture rotateIcon {
+            get {
+                if (!_rotateIcon) {
+                    _rotateIcon = LoadTextureWithName("rotate-icon");
+                }
+                return _rotateIcon;
+            }
+            set {
+                _rotateIcon = value;
+            }
+        }
 
-		private static int selectedToolIndex = 0;
+        private static Texture _unityIcon;
+        private static Texture _moveIcon;
+        private static Texture _scaleIcon;
+        private static Texture _rotateIcon;
+
+        private static int selectedToolIndex = 0;
 
 		public static float offsetStepSize = .1f;
 		public static float scaleStepSize = .1f;
@@ -39,16 +84,6 @@ namespace AutoTiling {
 				window.titleContent = new GUIContent("Auto Tiling");
 			}
 			window.Repaint();
-			if (!unityIcon || !moveIcon || !scaleIcon || !rotateIcon) {
-				unityIcon =  LoadTextureWithName("unity-icon");
-				moveIcon =   LoadTextureWithName("move-icon");
-				scaleIcon =  LoadTextureWithName("scale-icon");
-				rotateIcon = LoadTextureWithName("rotate-icon");
-//				unityIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/AutoTextureTilingTool/Icons/unity-icon.png");
-//				moveIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/AutoTextureTilingTool/Icons/move-icon.png");
-//				scaleIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/AutoTextureTilingTool/Icons/scale-icon.png");
-//				rotateIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/AutoTextureTilingTool/Icons/rotate-icon.png");
-			}
 			switch (currentTextureTool) {
 			case Tool.None:
 				selectedToolIndex = 0;
@@ -595,17 +630,17 @@ namespace AutoTiling {
                             break;
                     }
                     if (changedAnything) {
-						if (selected.useBakedMesh) {
-							GameObject prefab = PrefabUtility.GetPrefabParent(selected.gameObject) as GameObject;
-							if (prefab) {
-								PrefabUtility.ReplacePrefab(selected.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
-							}
-						}
 #if UNITY_5_3_OR_NEWER
                         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
 #else
                         EditorApplication.MarkSceneDirty();
 #endif
+                        if (selected.useBakedMesh) {
+							GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(selected.gameObject) as GameObject;
+							if (prefab) {
+                                PrefabUtility.SaveAsPrefabAssetAndConnect(selected.gameObject, AssetDatabase.GetAssetPath(prefab), InteractionMode.AutomatedAction);
+                            }
+                        }
                     }
                     offsetStepSize = Mathf.Clamp01(EditorGUILayout.FloatField("Offset Snap Step", offsetStepSize));
 					scaleStepSize = Mathf.Clamp01(EditorGUILayout.FloatField("Scale Snap Step", scaleStepSize));
@@ -615,7 +650,10 @@ namespace AutoTiling {
 					AutoTextureTiling tempSelected_att = Selection.activeGameObject.GetComponent<AutoTextureTiling>();
 					DynamicTextureTiling tempSelected_dtt = Selection.activeGameObject.GetComponent<DynamicTextureTiling>();
 					if (!(tempSelected_att || tempSelected_dtt)) {
-						EditorGUILayout.HelpBox("No side selected on " + Selection.activeGameObject.name + ". It maybe has no auto texture tiling component or needs a collider.", MessageType.Warning);
+						EditorGUILayout.HelpBox( Selection.activeGameObject.name + " does not seem to have an auto texture tiling component.", MessageType.Warning);
+                        if (GUILayout.Button("Add ATTT")) {
+                            Selection.activeGameObject.AddComponent<AutoTextureTiling>();
+                        }
 					}
 					else {
 						EditorGUILayout.HelpBox(Selection.activeGameObject.name + " selected. Click again for options.", MessageType.Warning);
@@ -784,7 +822,7 @@ namespace AutoTiling {
 					Debug.LogWarning (GetType() + "OnSelectionChange: setting current tool. Fallback to Move tool.");
 					Tools.current = Tool.Move;
 				}
-//				Debug.Log("Resetting selected object.");
+				Debug.Log("Resetting selected object.");
 				selected = null;
 				currentSelectedTriangles = new List<Vector3>();
 				currentSelectedTriangleNormal = Vector3.zero;

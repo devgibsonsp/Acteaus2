@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 #if UNITY_EDITOR
 using UnityEditor;
-using System.Linq;
-//using System.IO;
 #if UNITY_5_3_OR_NEWER
 using UnityEditor.SceneManagement;
 #endif
@@ -123,6 +120,7 @@ namespace AutoTiling {
         protected float scaleY;
         protected float scaleZ;
 
+        private Mesh bakedSharedMeshAsset;
         private MeshFilter _meshFilter;
         private MeshRenderer meshRenderer;
 
@@ -603,6 +601,7 @@ namespace AutoTiling {
                 if (meshFilter.sharedMesh != null) {
                     if (!_useBakedMesh || !MeshPrefabExists()) {
                         Mesh meshCopy = Mesh.Instantiate(meshFilter.sharedMesh) as Mesh;
+                        meshCopy.name = meshFilter.sharedMesh.name;
                         meshFilter.sharedMesh = meshCopy;
                     }
                 }
@@ -712,7 +711,6 @@ namespace AutoTiling {
                 Debug.LogError(name + ": " + GetType() + ".ApplyFaceScale: faceIndex out of range: " + faceIndex);
                 return;
             }
-            //Debug.Log("AlignOffsetTop");
             FaceData face = _faceUnwrapData[faceIndex];
             Rect faceBounds = GetFaceBounds(face);
             face.uvOffset = new Vector2(face.uvOffset.x, faceBounds.yMax / face.uvScale.y);
@@ -747,7 +745,6 @@ namespace AutoTiling {
                 Debug.LogError(name + ": " + GetType() + ".ApplyFaceScale: faceIndex out of range: " + faceIndex);
                 return;
             }
-            //Debug.Log("AlignOffsetBottom");
             FaceData face = _faceUnwrapData[faceIndex];
             Rect faceBounds = GetFaceBounds(face);
             face.uvOffset = new Vector2(face.uvOffset.x, faceBounds.y / face.uvScale.y);
@@ -782,7 +779,6 @@ namespace AutoTiling {
                 Debug.LogError(name + ": " + GetType() + ".ApplyFaceScale: faceIndex out of range: " + faceIndex);
                 return;
             }
-            //Debug.Log("AlignOffsetLeft");
             FaceData face = _faceUnwrapData[faceIndex];
             Rect faceBounds = GetFaceBounds(face);
             face.uvOffset = new Vector2(faceBounds.xMax / face.uvScale.x, face.uvOffset.y);
@@ -817,7 +813,6 @@ namespace AutoTiling {
                 Debug.LogError(name + ": " + GetType() + ".ApplyFaceScale: faceIndex out of range: " + faceIndex);
                 return;
             }
-            //Debug.Log("AlignOffsetRight");
             FaceData face = _faceUnwrapData[faceIndex];
             Rect faceBounds = GetFaceBounds(face);
             face.uvOffset = new Vector2(faceBounds.x / face.uvScale.x, face.uvOffset.y);
@@ -971,19 +966,44 @@ namespace AutoTiling {
                 return;
             }
 
+#if UNITY_EDITOR
+            if (!meshFilter.sharedMesh)
+            {
+                Debug.LogError(GetType() + ".CreateMeshAndUVs: shared mesh was null. This should not happen.");
+                return;
+            }
             if (!meshFilter.sharedMesh.isReadable) {
                 Debug.LogError(GetType() + ".CreateMeshAndUVs: could not edit mesh. Please make sure that 'Read/Write Enabled' is checked in the import settings.");
                 return;
             }
-
+#endif
             MeshData meshData = new MeshData();
 #if UNITY_EDITOR
-            Mesh meshToEdit = Instantiate(meshFilter.sharedMesh);
-            if (gameObject.isStatic && this as BasicTextureTiling == null) {
-                //Unwrapping.GenerateSecondaryUVSet(meshToEdit);
+            Mesh meshToEdit;
+            if (_useBakedMesh)
+            {
+                if (!bakedSharedMeshAsset)
+                {
+                    bakedSharedMeshAsset = AssetDatabase.LoadAssetAtPath(GetMeshAssetPath() + meshFilter.sharedMesh.name + extensionString, typeof(Mesh)) as Mesh;
+                }
+                meshToEdit = bakedSharedMeshAsset;
+            }
+            else
+            {
+                meshToEdit = Instantiate(meshFilter.sharedMesh);
+            }
+            meshToEdit.name = meshFilter.sharedMesh.name;
+            if (gameObject.isStatic && this as BasicTextureTiling == null)
+            {
+                Unwrapping.GenerateSecondaryUVSet(meshToEdit);
             }
 #else
             Mesh meshToEdit = meshFilter.mesh;
+            if (meshToEdit == null) 
+            {
+                Debug.LogWarning(GetType() + ".CreateMeshAndUVs: mesh was null. Automatically created a new one. Was this intended?");
+                meshToEdit = new Mesh();
+            }
 #endif
             if (meshToEdit.vertices.Length < 1) {
                 meshData = CreateStandardCubeMesh();
@@ -1003,10 +1023,6 @@ namespace AutoTiling {
             else {
                 Vector3[] oldVertices = meshToEdit.vertices;
                 Vector3[] oldNormals = meshToEdit.normals;
-                //int[][] submeshes = new int[meshToEdit.subMeshCount][];
-                //for (int i = 0; i < meshToEdit.subMeshCount; i++) {
-                //    submeshes[i] = meshToEdit.GetTriangles(i);
-                //}
                 if (oldVertices.Length < 3) {
                     Debug.LogError(name + ": " + GetType() + ".CreateMeshAndUVs: there was something wrong with the mesh, not enough vertices: " + oldVertices.Length + ".");
                     return;
@@ -1070,22 +1086,20 @@ namespace AutoTiling {
             }
 #endif
 #if UNITY_EDITOR
-            meshFilter.sharedMesh = meshToEdit;
-            //if (gameObject.isStatic) {
-            //    Unwrapping.GenerateSecondaryUVSet(meshFilter.sharedMesh);
-            //}
+            if (_useBakedMesh)
+            {
+                EditorUtility.SetDirty(meshToEdit);
+            }
+            else {
+                meshFilter.sharedMesh = meshToEdit;
+            }
 #else
             meshFilter.mesh = meshToEdit;
 #endif
             if (freshMesh) {
                 freshMesh = false;
             }
-
         }
-
-        //private FaceData[] GenerateFaceDataFromCurrentMesh(Mesh sharedMesh) {
-        //    throw new NotImplementedException();
-        //}
 
         private MeshData CreateStandardCubeMesh() {
 
@@ -1308,18 +1322,12 @@ namespace AutoTiling {
             newMeshData = AddMeshDataForTriangleList(rightTriangles, Vector3.right, newMeshData, data, _rightMaterialIndex);
             newMeshData = AddMeshDataForTriangleList(topTriangles, Vector3.up, newMeshData, data, _topMaterialIndex);
 
-            //			Debug.Log ("Count vertices: " + newMeshData.Vertices.Count + ", count normals: " + newMeshData.Normals.Count + ", count UVs: " + newMeshData.UV.Count);
-            //			foreach (var t in newMeshData.Triangles) {
-            //				Debug.Log("UV " + t + ": " + newMeshData.UV[t]);
-            //			}
-
             return newMeshData;
 
         }
 
         protected virtual MeshData SplitMeshForFaceUnwrapping(MeshData meshData) {
 
-            //Debug.Log("Original mesh submesh count: " + meshData.subMeshCount);
             MeshData oldMeshData = meshData.Copy();
             meshData.RemoveDoubles(gameObject.isStatic);
             List<FaceData> faceDataList = new List<FaceData>();
@@ -1590,7 +1598,6 @@ namespace AutoTiling {
                 }
             }
             Debug.Log(vertexString);
-
         }
 
         private MeshData AddMeshDataForTriangleList(List<int> triangleIds, Vector3 normalDirection, MeshData newData, MeshData oldData, int materialIndex) {
@@ -1786,25 +1793,7 @@ namespace AutoTiling {
                 Debug.LogError(name + ": " + GetType() + ".SaveMeshAsset: there was no mesh set.");
                 return;
             }
-            string currentMeshAssetPath = meshAssetPathString;
-            string[] pathGUIDs = AssetDatabase.FindAssets("AutoTextureTilingTool");
-            string foundPath = "";
-            if (pathGUIDs == null || pathGUIDs.Length < 1) {
-                Debug.LogError("No asset \"AutoTextureTilingTool\" was found.");
-            }
-            else {
-                if (pathGUIDs.Length > 1) {
-                    Debug.LogWarning(GetType() + ".SaveMeshAsset: there is more than one path or asset called \"AutoTextureTilingTool\". There should only be one single path named \"AutoTextureTilingTool\"");
-                }
-                for (int i = 0; i < pathGUIDs.Length; i++) {
-                    foundPath = AssetDatabase.GUIDToAssetPath(pathGUIDs[i]);
-                    Debug.Log("Found Asset: " + AssetDatabase.GUIDToAssetPath(pathGUIDs[i]));
-                    if (!string.IsNullOrEmpty(foundPath)) {
-                        currentMeshAssetPath = foundPath + "/Meshes/";
-                        break;
-                    }
-                }
-            }
+            string currentMeshAssetPath = GetMeshAssetPath();
             string[] pathParts = currentMeshAssetPath.Split('/');
 
             if (pathParts == null || pathParts.Length < 1) {
@@ -1823,19 +1812,10 @@ namespace AutoTiling {
                         currentPath += "/" + pathParts[curPathId];
                     }
                     if (!AssetDatabase.IsValidFolder(currentPath + "/" + pathParts[i])) {
-                        Debug.Log("Creating folder " + currentPath + "/" + pathParts[i]);
                         AssetDatabase.CreateFolder(currentPath, pathParts[i]);
                     }
                 }
             }
-            //			if (!AssetDatabase.IsValidFolder("Assets/AutoTextureTilingTool")) {
-            //				Debug.Log ("Creating folder AutoTextureTilingTool");
-            //				AssetDatabase.CreateFolder("Assets", "AutoTextureTilingTool");
-            //			}
-            //			if (!AssetDatabase.IsValidFolder("Assets/AutoTextureTilingTool/Meshes")) {
-            //				Debug.Log ("Creating folder Meshes");
-            //				AssetDatabase.CreateFolder("Assets/AutoTextureTilingTool", "Meshes");
-            //			}
             Mesh meshPrefab = AssetDatabase.LoadAssetAtPath(currentMeshAssetPath + meshFilter.sharedMesh.name + extensionString, typeof(Mesh)) as Mesh;
             if (meshPrefab) {
                 if (meshPrefab != meshFilter.sharedMesh) {
@@ -1852,9 +1832,9 @@ namespace AutoTiling {
                                 //								prefabName = meshAssetPathString + EditorApplication.currentScene.Replace('/', '_').Replace('\\', '_') + "_" + name + "_" + (++numberSuffix) + extensionString;
                                 meshPrefab = AssetDatabase.LoadAssetAtPath(prefabName, typeof(Mesh)) as Mesh;
                             }
-                            Debug.Log("Creating mesh prefab at " + prefabName);
                             _useBakedMesh = true;
                             Mesh meshToSave = Mesh.Instantiate(meshFilter.sharedMesh);
+                            meshToSave.name = meshFilter.sharedMesh.name;
                             AssetDatabase.CreateAsset(meshToSave, prefabName);
                             AssetDatabase.SaveAssets();
                             meshFilter.sharedMesh = AssetDatabase.LoadAssetAtPath(prefabName, typeof(Mesh)) as Mesh;
@@ -1878,9 +1858,9 @@ namespace AutoTiling {
                     //					prefabName = meshAssetPathString + EditorApplication.currentScene.Replace('/', '_').Replace('\\', '_') + "_" + name + "_" + (++numberSuffix) + extensionString;
                     meshPrefab = AssetDatabase.LoadAssetAtPath(prefabName, typeof(Mesh)) as Mesh;
                 }
-                Debug.Log("Creating mesh prefab at " + prefabName);
                 _useBakedMesh = true;
                 Mesh meshToSave = Mesh.Instantiate(meshFilter.sharedMesh);
+                meshToSave.name = meshFilter.sharedMesh.name;
                 AssetDatabase.CreateAsset(meshToSave, prefabName);
                 AssetDatabase.SaveAssets();
                 meshFilter.sharedMesh = AssetDatabase.LoadAssetAtPath(prefabName, typeof(Mesh)) as Mesh;
@@ -1893,31 +1873,12 @@ namespace AutoTiling {
 
         public void DeleteConnectedMesh() {
 
-            string currentMeshAssetPath = meshAssetPathString;
-            string[] pathGUIDs = AssetDatabase.FindAssets("AutoTextureTilingTool");
-            string foundPath = "";
-            if (pathGUIDs == null || pathGUIDs.Length < 1) {
-                Debug.LogError("No asset \"AutoTextureTilingTool\" was found.");
-            }
-            else {
-                if (pathGUIDs.Length > 1) {
-                    Debug.LogWarning(GetType() + ".SaveMeshAsset: there is more than one path or asset called \"AutoTextureTilingTool\". There should only be one single path named \"AutoTextureTilingTool\"");
-                }
-                for (int i = 0; i < pathGUIDs.Length; i++) {
-                    foundPath = AssetDatabase.GUIDToAssetPath(pathGUIDs[i]);
-                    Debug.Log("Found Asset: " + AssetDatabase.GUIDToAssetPath(pathGUIDs[i]));
-                    if (!string.IsNullOrEmpty(foundPath)) {
-                        currentMeshAssetPath = foundPath + "/Meshes/";
-                        break;
-                    }
-                }
-            }
+            string currentMeshAssetPath = GetMeshAssetPath();
             Mesh meshPrefab = AssetDatabase.LoadAssetAtPath(currentMeshAssetPath + meshFilter.sharedMesh.name + extensionString, typeof(Mesh)) as Mesh;
             if (!meshPrefab && meshFilter.sharedMesh.name.EndsWith("(Clone)")) {
                 meshPrefab = AssetDatabase.LoadAssetAtPath(currentMeshAssetPath + meshFilter.sharedMesh.name.Substring(0, meshFilter.sharedMesh.name.Length - 7) + extensionString, typeof(Mesh)) as Mesh;
             }
             if (meshPrefab) {
-                Debug.Log(name + ": " + GetType() + ".SaveMeshAsset: deleting " + meshPrefab.name + ".");
                 AutoTextureTiling[] listOfTextureTilingToolObjects = FindObjectsOfType<AutoTextureTiling>();
                 for (int i = 0; i < listOfTextureTilingToolObjects.Length; i++) {
                     if (listOfTextureTilingToolObjects[i].meshFilter.sharedMesh == meshPrefab) {
@@ -1928,7 +1889,7 @@ namespace AutoTiling {
                     Debug.LogError(name + ": " + GetType() + ".SaveMeshAsset: could not delete " + meshPrefab.name + ": failed to execute AssetDatabase.DeleteAsset.");
                 }
                 else {
-                    GameObject prefab = PrefabUtility.GetPrefabParent(this.gameObject) as GameObject;
+                    GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(this.gameObject) as GameObject;
                     if (prefab) {
                         Debug.LogWarning(GetType() + ".BreakMeshAssetConnection: mesh asset was deleted, but object was instance of a prefab. It is recommended to delete the prefab " + prefab.name + ".");
                     }
@@ -1944,49 +1905,61 @@ namespace AutoTiling {
 
         public void BreakMeshAssetConnection() {
 
-            Debug.Log(name + ": " + GetType() + ".BreakMeshAssetConnection: reverting to on-the-run-created mesh.");
             if (_useBakedMesh) {
                 if (meshFilter.sharedMesh) {
                     Mesh meshCopy = Mesh.Instantiate(meshFilter.sharedMesh) as Mesh;
+                    meshCopy.name = meshFilter.sharedMesh.name;
                     meshFilter.sharedMesh = meshCopy;
                     meshFilter.sharedMesh.name = "Mesh " + name;
                 }
                 _useBakedMesh = false;
-                GameObject prefab = PrefabUtility.GetPrefabParent(this.gameObject) as GameObject;
-                if (prefab) {
+                GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(this.gameObject) as GameObject;
+                if (prefab)
+                {
+#if UNITY_2018
+                    PrefabUtility.UnpackPrefabInstance(this.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+#else
                     PrefabUtility.DisconnectPrefabInstance(this.gameObject);
+#endif
                 }
                 EditorUtility.SetDirty(this);
             }
 
         }
 
-        public bool MeshPrefabExists() {
+        public bool MeshPrefabExists()
+        {
+            string currentMeshAssetPath = GetMeshAssetPath();
+            return AssetDatabase.LoadAssetAtPath(currentMeshAssetPath + meshFilter.sharedMesh.name + extensionString, typeof(Mesh)) as Mesh != null;
+        }
 
-            //			Debug.Log (name + ": " + GetType() + ".MeshPrefabExists: trying to find mesh asset with name " + meshFilter.sharedMesh.name + ".");
+        private string GetMeshAssetPath()
+        {
             string currentMeshAssetPath = meshAssetPathString;
             string[] pathGUIDs = AssetDatabase.FindAssets("AutoTextureTilingTool");
             string foundPath = "";
-            if (pathGUIDs == null || pathGUIDs.Length < 1) {
+            if (pathGUIDs == null || pathGUIDs.Length < 1)
+            {
                 Debug.LogError("No asset \"AutoTextureTilingTool\" was found.");
             }
-            else {
-                if (pathGUIDs.Length > 1) {
+            else
+            {
+                if (pathGUIDs.Length > 1)
+                {
                     Debug.LogWarning(GetType() + ".SaveMeshAsset: there is more than one path or asset called \"AutoTextureTilingTool\". There should only be one single path named \"AutoTextureTilingTool\"");
                 }
-                for (int i = 0; i < pathGUIDs.Length; i++) {
+                for (int i = 0; i < pathGUIDs.Length; i++)
+                {
                     foundPath = AssetDatabase.GUIDToAssetPath(pathGUIDs[i]);
-                    //					Debug.Log ("Found Asset: " + AssetDatabase.GUIDToAssetPath(pathGUIDs[i]));
-                    if (!string.IsNullOrEmpty(foundPath)) {
-                        currentMeshAssetPath = foundPath;
+                    if (!string.IsNullOrEmpty(foundPath))
+                    {
+                        currentMeshAssetPath = foundPath + "/Meshes/";
                         break;
                     }
                 }
             }
-            return AssetDatabase.LoadAssetAtPath(currentMeshAssetPath + meshFilter.sharedMesh.name + extensionString, typeof(Mesh)) as Mesh != null;
-
+            return currentMeshAssetPath;
         }
-
 #endif
 
 #if FALSE // UNITY_EDITOR //

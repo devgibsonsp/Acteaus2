@@ -1821,37 +1821,37 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isWalking
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isRunning
   - Type: 1
     SynchronizeType: 0
     Name: attackSpeedMultiplier
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isDead
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isCasting
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isAttacking_A
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isAttacking_B
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: _shieldEquipped
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: _staffEquipped
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isTakingDamage
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isBlocking
   m_SynchronizeLayers:
   - SynchronizeType: 0

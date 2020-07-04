@@ -457,17 +457,17 @@ namespace AutoTiling {
             }
 
             if (changedAnything) {
-                if (Target.useBakedMesh) {
-                    GameObject prefab = PrefabUtility.GetPrefabParent(Target.gameObject) as GameObject;
-                    if (prefab) {
-                        PrefabUtility.ReplacePrefab(Target.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
-                    }
-                }
 #if UNITY_5_3_OR_NEWER
                 EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
 #else
                 EditorApplication.MarkSceneDirty();
 #endif
+                if (Target.useBakedMesh) {
+                    GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(Target.gameObject) as GameObject;
+                    if (prefab) {
+                        PrefabUtility.SaveAsPrefabAssetAndConnect(Target.gameObject, AssetDatabase.GetAssetPath(prefab), InteractionMode.AutomatedAction);
+                    }
+                }
             }
 
         }
@@ -1806,17 +1806,17 @@ namespace AutoTiling {
                     }
 
                     if (changedAnything) {
-                        if (att.useBakedMesh) {
-                            GameObject prefab = PrefabUtility.GetPrefabParent(att.gameObject) as GameObject;
-                            if (prefab) {
-                                PrefabUtility.ReplacePrefab(att.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
-                            }
-                        }
 #if UNITY_5_3_OR_NEWER
                         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
 #else
                         EditorApplication.MarkSceneDirty();
 #endif
+                        if (att.useBakedMesh) {
+                            GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(att.gameObject) as GameObject;
+                            if (prefab) {
+                                PrefabUtility.SaveAsPrefabAssetAndConnect(att.gameObject, AssetDatabase.GetAssetPath(prefab), InteractionMode.AutomatedAction);
+                            }
+                        }
                     }
                 }
             }
