@@ -146,7 +146,7 @@ namespace ObjectData.CharacterData
             BarStats.Health           = BarStats._HealthMax;
             BarStats.Magic            = BarStats._MagicMax;
             ModifierStats.Armor       = 0;
-            ModifierStats.BlockChance = 0;
+            ModifierStats.BlockChance = 30;
         }
 
     }

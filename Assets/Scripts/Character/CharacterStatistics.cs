@@ -11,7 +11,7 @@ public class CharacterStatistics : MonoBehaviour
     public Character Player { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     { 
         //Player = new Character("Steve", 0, 1, Generate.BarStats(), Generate.CoreStats(), Generate.ModifierStats());
         Player = new Character(RaceType.Human);
