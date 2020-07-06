@@ -1,5 +1,5 @@
 
-namespace ObjectData.itemData.Models
+namespace ObjectData.ItemData.Models
 {
     public class ItemModel
     {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using ObjectData.ItemData.Utilities;
+
 public class playerInventory : MonoBehaviour {
 
 	public Text goldAmountVal;
@@ -16,9 +18,17 @@ public class playerInventory : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		merchantGoodBeingBought = false;
 		notEnoughMoneyToBuy = false;
+
+
+		// THIS all needs to be revamped
+		ItemLookup.InitializeItemData();
+
+
+
+
 	}
 	
 	// Update is called once per frame

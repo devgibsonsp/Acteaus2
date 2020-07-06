@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-using ObjectData.itemData.Models;
+using ObjectData.ItemData.Models;
+using ObjectData.ItemData.Utilities;
 
 public class ItemProperties : MonoBehaviour {
 
 
 	public ItemModel Item { get; set; }
 
+	public Item Item2 { get; set; }
 
 	public Vector3 offset;
 	public bool isMerchantGood;
@@ -22,12 +24,13 @@ public class ItemProperties : MonoBehaviour {
 	private GameObject inventory;
 	private playerInventory invReference;
 
-
+	// This all needs to be majorly cleaned up
 
 
 	void Start() {
 
 		Item = new ItemModel();
+		Item2 = ItemLookup.FindItem(this.gameObject.name);
 
 		tooltip = GameObject.Find("ToolTip");
 		tooltipCanvas = tooltip.GetComponent<Canvas>();
@@ -74,12 +77,12 @@ public class ItemProperties : MonoBehaviour {
 		//tooltip.SetActive(true);
 		tooltipCanvas.enabled = true;
 		tooltip.transform.position = Input.mousePosition + offset;
-		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item.ItemName;
-		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item.Description;
-		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item.Type;
-		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item.LevelRequirement.ToString();
-		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item.PhysicalDamage.ToString();
-		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item.ItemValue.ToString() + " Gold";
+		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item2.Name;
+		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item2.Description;
+		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item2.Type;
+		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item2.Requirement.Level;
+		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item2.Properties.Physical;
+		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item2.Value + " Gold";
 	}
 
 	public void disableTooltip() {

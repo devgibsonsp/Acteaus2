@@ -1,0 +1,36 @@
+{
+    "Items": [
+        {
+            "Name": "Blade of Acteaus",
+            "Description": "This is a cool blade",
+            "Type": "Sword",
+            "Rarity": 4,
+            "Requirement": {
+                "Level": 40,
+                "Strength": 20,
+                "Dexterity": 20,
+                "Vitality": 0,
+                "Wisdom": 0,
+                "Intellect": 0
+            },
+            "Properties": {
+                "Physical": 135,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0
+            },
+            "Value": 5
+        }
+    ]
+}
