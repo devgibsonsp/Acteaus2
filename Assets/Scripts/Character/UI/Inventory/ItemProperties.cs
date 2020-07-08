@@ -6,31 +6,27 @@ using UnityEngine.EventSystems;
 
 using ObjectData.ItemData.Models;
 using ObjectData.ItemData.Utilities;
+using UI;
+public class ItemProperties : MonoBehaviour, IBeginDragHandler, IEndDragHandler
+{
 
-public class ItemProperties : MonoBehaviour {
-
-
-	public ItemModel Item { get; set; }
-
-	public Item Item2 { get; set; }
-
-	public Vector3 offset;
+	public Item Item { get; set; }
 	public bool isMerchantGood;
 
 	private bool merchantGoodBeingDragged;
-
+	private Vector3 offset;
 	private GameObject tooltip;
 	private Canvas tooltipCanvas;
 	private GameObject inventory;
-	private playerInventory invReference;
+	//private playerInventory invReference;
 
 	// This all needs to be majorly cleaned up
 
 
 	void Start() {
 
-		Item = new ItemModel();
-		Item2 = ItemLookup.FindItem(this.gameObject.name);
+		offset = new Vector3(150f,35f,0f);
+		Item = ItemLookup.FindItem(this.gameObject.name);
 
 		tooltip = GameObject.Find("ToolTip");
 		tooltipCanvas = tooltip.GetComponent<Canvas>();
@@ -38,11 +34,11 @@ public class ItemProperties : MonoBehaviour {
 
 		merchantGoodBeingDragged = false;
 
-        EventTrigger trigger = GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.Drag;
-        entry.callback.AddListener((data) => { dragEvent((PointerEventData)data); });
-        trigger.triggers.Add(entry);
+        //EventTrigger trigger = GetComponent<EventTrigger>();
+        //EventTrigger.Entry entry = new EventTrigger.Entry();
+        //entry.eventID = EventTriggerType.Drag;
+        //entry.callback.AddListener((data) => { dragEvent((PointerEventData)data); });
+        //trigger.triggers.Add(entry);
 		
 	}
 
@@ -50,39 +46,41 @@ public class ItemProperties : MonoBehaviour {
 
 	
 
-	public void dragEvent(PointerEventData data){
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+		UserInterfaceLock.DraggedItem = this;
+		UserInterfaceLock.IsDragging = true;
+		Debug.Log("Smap");
+    }
 
-		// If the item is worth more gold than the player possesses...
-		if(isMerchantGood && Item.ItemValue > inventory.GetComponent<playerInventory>().getGoldAmount()){
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(true);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(false);
-
-		}
-		else if(isMerchantGood){
-			merchantGoodBeingDragged = true;
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(false);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(true);
-		} else if(!isMerchantGood) {
-			merchantGoodBeingDragged = false;
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(false);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(false);
-		}
-	}
-	public void test2(){
-
-		Debug.Log("dropped");
-	}
+    public void OnEndDrag(PointerEventData eventData)
+    {
+		UserInterfaceLock.IsDragging = false;
+ 		Debug.Log("ddddddddddd");
+    }
 
 	public void enableTooltip() {
-		//tooltip.SetActive(true);
 		tooltipCanvas.enabled = true;
 		tooltip.transform.position = Input.mousePosition + offset;
-		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item2.Name;
-		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item2.Description;
-		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item2.Type;
-		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item2.Requirement.Level;
-		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item2.Properties.Physical;
-		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item2.Value + " Gold";
+		if(Item.SlotType == "Weapon")
+		{
+			WeaponToolTip();
+		}
+	}
+
+	private void WeaponToolTip()
+	{
+		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item.Name;
+		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item.Description;
+		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item.Type;
+		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item.Requirement.Level;
+		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item.Properties.Physical;
+		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item.Value + " Gold";
+	}
+
+	private void ArmorToolTip()
+	{
+
 	}
 
 	public void disableTooltip() {
@@ -90,20 +88,5 @@ public class ItemProperties : MonoBehaviour {
 		tooltipCanvas.enabled = false;
 	}
 
-	public int getArmor() {
-		return Item.Armor;
-	}
-
-	public bool getIsMerchantGood(){
-		return isMerchantGood;
-	}
-
-	public void setIsMerchantGood(bool b){
-		isMerchantGood = b;
-	}
-
-	public int getItemValue(){
-		return Item.ItemValue;
-	}
 }
 

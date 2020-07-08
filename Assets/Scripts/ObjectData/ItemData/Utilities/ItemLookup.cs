@@ -10,12 +10,12 @@ namespace ObjectData.ItemData.Utilities
         public static readonly string path =  Application.dataPath + "/Scripts/ObjectData/ItemData/Static";
         public static readonly string file = "/ItemData.json";
 
-        public static ItemModelTwo MasterList { get; set;}
+        public static ItemModel MasterList { get; set;}
 
         public static void InitializeItemData()
         {
             JObject data = JSONUtilities.LoadJSON(path + file);
-            MasterList = data.ToObject<ItemModelTwo>();
+            MasterList = data.ToObject<ItemModel>();
         }
 
         public static Item FindItem(string name)
