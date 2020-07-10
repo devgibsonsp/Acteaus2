@@ -62,21 +62,34 @@ public class ItemProperties : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 	public void enableTooltip() {
 		tooltipCanvas.enabled = true;
 		tooltip.transform.position = Input.mousePosition + offset;
-		if(Item.SlotType == "Weapon")
-		{
-			WeaponToolTip();
-		}
-	}
-
-	private void WeaponToolTip()
-	{
 		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item.Name;
 		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item.Description;
 		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item.Type;
 		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item.Requirement.Level;
-		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item.Properties.Physical;
+		if(Item.SlotType == "Weapon")
+		{
+			tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item.Properties.Physical;
+		}
+		else if(Item.SlotType == "Shield")
+		{
+			tooltip.transform.GetChild(4).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Armor")
+		{
+			tooltip.transform.GetChild(4).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Armor")
+		{
+			tooltip.transform.GetChild(4).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Consumable")
+		{
+			tooltip.transform.GetChild(4).GetComponent<Text>().text = "Consumable";
+		}
 		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item.Value + " Gold";
 	}
+
+
 
 	private void ArmorToolTip()
 	{

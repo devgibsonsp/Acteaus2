@@ -29,7 +29,8 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 0
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
@@ -40,7 +41,7 @@
             "SlotType": "Weapon",
             "Rarity": 0,
             "Requirement": {
-                "Level": 0,
+                "Level": 2,
                 "Strength": 0,
                 "Dexterity": 0,
                 "Vitality": 0,
@@ -62,13 +63,14 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 0
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
         {
             "Name": "Minor Health Potion",
-            "Description": "This is a cool blade",
+            "Description": "Should be helpful for some small wounds",
             "Type": "Consumable",
             "SlotType": "Consumable",
             "Rarity": 4,
@@ -95,13 +97,14 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 0
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
         {
             "Name": "Minor Magic Potion",
-            "Description": "This is a cool blade",
+            "Description": "A small boost to your magic pool",
             "Type": "Consumable",
             "SlotType": "Consumable",
             "Rarity": 4,
@@ -128,26 +131,27 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 0
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
         {
             "Name": "Wooden Shield",
-            "Description": "This is a cool blade",
+            "Description": "A few planks of wood bound together in an iron frame",
             "Type": "Shield",
             "SlotType": "Shield",
-            "Rarity": 4,
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 20,
+                "Level": 0,
+                "Strength": 0,
+                "Dexterity": 0,
                 "Vitality": 0,
                 "Wisdom": 0,
                 "Intellect": 0
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 0,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -161,7 +165,8 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 0
+                "Armor": 2,
+                "block": 2
             },
             "Value": 5
         }

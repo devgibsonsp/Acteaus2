@@ -7,5 +7,9 @@ namespace UI
         public static bool IsDragging { get; set; } = false;
 
         public static ItemProperties DraggedItem { get; set; }
+
+        public static CharacterStatistics CharacterReference { get; set; }
+
+
     }
 }

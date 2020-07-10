@@ -10,6 +10,7 @@ namespace ObjectData.ItemData.Utilities
         public static readonly string path =  Application.dataPath + "/Scripts/ObjectData/ItemData/Static";
         public static readonly string file = "/ItemData.json";
 
+        // This will need to be replaced by database entries in the future
         public static ItemModel MasterList { get; set;}
 
         public static void InitializeItemData()

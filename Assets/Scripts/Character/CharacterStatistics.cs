@@ -5,7 +5,10 @@ using ObjectData.CharacterData;
 using ObjectData.CharacterData.Models;
 using ObjectData.CharacterData.Types;
 using ObjectData.CharacterData.Utilties;
-public class CharacterStatistics : MonoBehaviour
+using UI;
+using Photon.Pun;
+
+public class CharacterStatistics : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     public Character Player { get; set; }
@@ -20,6 +23,8 @@ public class CharacterStatistics : MonoBehaviour
         while(Player.SkillPoints > 0) {
             Player.DistributeSkillPoint(CoreStatType.Strength);
         }
+
+
         
     }
     

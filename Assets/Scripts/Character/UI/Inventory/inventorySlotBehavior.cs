@@ -15,8 +15,11 @@ public class inventorySlotBehavior : MonoBehaviour
 
 	private bool allSlotsSetToDragOnly;
 
+	private CharacterStatistics CharacterStatsReference { get; set;}
+
 	// Use this for initialization
 	void Start () {
+
 		inventory = GameObject.Find("Inventory").GetComponent<playerInventory>();
 		inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 		itemHasBeenUpdatedAlready = false;
@@ -28,12 +31,15 @@ public class inventorySlotBehavior : MonoBehaviour
 
 		if(UserInterfaceLock.IsDragging && !itemHasBeenUpdatedAlready)
 		{
+			Debug.Log(UserInterfaceLock.CharacterReference.Player.Name);
 			itemHasBeenUpdatedAlready = true;
 			ItemProperties itemRef = UserInterfaceLock.DraggedItem;
-			if(SlotType != itemRef.Item.SlotType && SlotType != "All")
+			if((SlotType != itemRef.Item.SlotType && SlotType != "All") || !HasMetItemRequirements(itemRef))
 			{
 				this.gameObject.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
 			}
+
+
 		}
 		else if(!UserInterfaceLock.IsDragging && itemHasBeenUpdatedAlready)
 		{
@@ -64,6 +70,35 @@ public class inventorySlotBehavior : MonoBehaviour
 		//}
 
 
+	}
+
+	private bool HasMetItemRequirements(ItemProperties itemRef)
+	{
+			if(itemRef.Item.Requirement.Dexterity > UserInterfaceLock.CharacterReference.Player.CoreStats.Dexterity)
+			{
+				return false;
+			}
+			if(itemRef.Item.Requirement.Intellect > UserInterfaceLock.CharacterReference.Player.CoreStats.intellect)
+			{
+				return false;
+			}
+			if(itemRef.Item.Requirement.Level > UserInterfaceLock.CharacterReference.Player.Level)
+			{
+				return false;
+			}
+			if(itemRef.Item.Requirement.Strength > UserInterfaceLock.CharacterReference.Player.CoreStats.Strength)
+			{
+				return false;
+			}
+			if(itemRef.Item.Requirement.Vitality > UserInterfaceLock.CharacterReference.Player.CoreStats.Vitality)
+			{
+				return false;
+			}
+			if(itemRef.Item.Requirement.Wisdom > UserInterfaceLock.CharacterReference.Player.CoreStats.Wisdom)
+			{
+				return false;
+			}
+			return true;
 	}
 
 

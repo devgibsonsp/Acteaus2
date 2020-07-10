@@ -108,6 +108,12 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
         AnimationEvents = gameObject.GetComponent<CharacterAnimation>();
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Anim = gameObject.GetComponent<Animator>();
+        if (!isNPC && !photonView.IsMine)
+        {
+            return;
+        }
+        // Setting the reference to this character specific to the client
+        UserInterfaceLock.CharacterReference = PlayerStatistics;
     }
 
     ///<summary>Calculate Player attack</summary>
