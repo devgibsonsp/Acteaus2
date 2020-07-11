@@ -110,7 +110,7 @@ namespace ObjectData.CharacterData
             CalculateStats(empty);
         }
 
-        private void CalculateStats(Properties EquipmentModifiers)
+        public void CalculateStats(Properties EquipmentModifiers)
         {
             switch(CharClass)
             {

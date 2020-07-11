@@ -9,7 +9,7 @@
             "Requirement": {
                 "Level": 40,
                 "Strength": 20,
-                "Dexterity": 20,
+                "Dexterity": 21,
                 "Vitality": 0,
                 "Wisdom": 0,
                 "Intellect": 0
@@ -43,10 +43,10 @@
             "Requirement": {
                 "Level": 2,
                 "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
+                "Dexterity": 2,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
                 "Physical": 1,
@@ -79,7 +79,7 @@
                 "Strength": 20,
                 "Dexterity": 20,
                 "Vitality": 0,
-                "Wisdom": 0,
+                "Wisdom": 1,
                 "Intellect": 0
             },
             "Properties": {

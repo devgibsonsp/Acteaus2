@@ -34,7 +34,7 @@ public class inventorySlotBehavior : MonoBehaviour
 			Debug.Log(UserInterfaceLock.CharacterReference.Player.Name);
 			itemHasBeenUpdatedAlready = true;
 			ItemProperties itemRef = UserInterfaceLock.DraggedItem;
-			if((SlotType != itemRef.Item.SlotType && SlotType != "All") || !HasMetItemRequirements(itemRef))
+			if((SlotType != itemRef.Item.SlotType && SlotType != "All") || (!HasMetItemRequirements(itemRef) && SlotType != "All"))
 			{
 				this.gameObject.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
 			}

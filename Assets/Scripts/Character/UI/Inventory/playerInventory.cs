@@ -14,6 +14,8 @@ public class playerInventory : MonoBehaviour
 
 	private bool IsPerformingEquipmentUpdate { get; set; } = false;
 
+
+
 	// Use this for initialization
 	void Awake () {
 		
@@ -56,16 +58,18 @@ public class playerInventory : MonoBehaviour
 	{
 
 		// Todo: On equip, push list of items to be passed to the damage calculator for looping through
-
+		Properties equipmentProperties = new Properties();
 
 		// In the future this will only fire on an equipment change rather than
 		// any inventory slot change
 		if(inventorySlots.HeadSlot.transform.childCount > 0)
 		{
+			equipmentProperties.Armor += inventorySlots.HeadSlot.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Armor;
 			Debug.Log("HeadSlot");
 		}
 		if(inventorySlots.GloveSlot.transform.childCount > 0)
 		{
+			equipmentProperties.Armor += inventorySlots.GloveSlot.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Armor;
 			Debug.Log("GloveSlot");
 		}
 		if(inventorySlots.NeckSlot1.transform.childCount > 0)
@@ -78,19 +82,22 @@ public class playerInventory : MonoBehaviour
 		}
 		if(inventorySlots.BodySlot.transform.childCount > 0)
 		{
+			equipmentProperties.Armor += inventorySlots.BodySlot.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Armor;
 			Debug.Log("BodySlot");
 		}
 		if(inventorySlots.HandSlot1.transform.childCount > 0)
 		{
-			Item itemRef = inventorySlots.HandSlot1.transform.GetChild(0).GetComponent<ItemProperties>().Item;
-			Debug.Log(itemRef.Properties.Physical);
+			equipmentProperties.Physical += inventorySlots.HandSlot1.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Physical;
+			Debug.Log("BodySlot");
 		}
 		if(inventorySlots.HandSlot2.transform.childCount > 0)
 		{
+			equipmentProperties.Armor += inventorySlots.HandSlot2.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Armor;
 			Debug.Log("HandSlot2");
 		}
 		if(inventorySlots.FeetSlot.transform.childCount > 0)
 		{
+			equipmentProperties.Armor += inventorySlots.FeetSlot.transform.GetChild(0).GetComponent<ItemProperties>().Item.Properties.Armor;
 			Debug.Log("FeetSlot");
 		}
 		if(inventorySlots.FingerSlot1.transform.childCount > 0)
@@ -109,6 +116,7 @@ public class playerInventory : MonoBehaviour
 		{
 			Debug.Log("FingerSlot4");
 		}
+		UserInterfaceLock.CharacterReference.Player.CalculateStats(equipmentProperties);
 		
 	}
 	

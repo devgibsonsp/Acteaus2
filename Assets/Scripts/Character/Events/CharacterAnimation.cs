@@ -6,10 +6,13 @@ using System;
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator Anim { get; set; }
+
+    private CharacterAudio Audio { get; set; }
     
     void Awake()
     {
         Anim = gameObject.GetComponent<Animator>();
+        Audio = gameObject.GetComponent<CharacterAudio>();
     }
 
 
@@ -85,10 +88,20 @@ public class CharacterAnimation : MonoBehaviour
     {
         if (agent.velocity != Vector3.zero)
         {
+            if(Audio != null && !Audio.FootStepAudioIsPlaying())
+            {
+                Audio.FootStepAudio(true);
+            }
+            
             Anim.SetBool("isRunning",true);
         }
         else
         {
+            if(Audio != null && Audio.FootStepAudioIsPlaying())
+            {
+                Audio.FootStepAudio(false);
+            }
+            
             Anim.SetBool("isRunning",false);
         }
     }
