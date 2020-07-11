@@ -10,18 +10,28 @@ using UI;
 public class playerInventory : MonoBehaviour 
 {
 
+	// *** Leaving a note here for future that if there is a split second that items aren't
+	// calculated then this could lead to players getting killed as soon as they log in
+	// There will need to be a few seconds of player immunity while the player's data is being loaded. ***
+
 	private InventorySlotModel inventorySlots;
 
 	private bool IsPerformingEquipmentUpdate { get; set; } = false;
 
+	private Text StatsIndicator { get; set; }
+
+	private bool InventoryCalcuated { get; set; } = false;
 
 
 	// Use this for initialization
-	void Awake () {
+	void Awake () 
+	{
 		
+		StatsIndicator = GameObject.Find("StatsIndicator").GetComponent<Text>();
+
 		// Initializing the item lookup table
 		ItemLookup.InitializeItemData();
-
+		
 		inventorySlots = new InventorySlotModel
 		{
 			HeadSlot    = GameObject.Find("HeadSlot"),
@@ -37,12 +47,20 @@ public class playerInventory : MonoBehaviour
 			FingerSlot3 = GameObject.Find("Finger3Slot"),
 			FingerSlot4 = GameObject.Find("Finger4Slot")
 		};
-
-
+		
+		
 	}
 
 	void Update()
 	{
+		// If the item master list is initialized, flip the flag and calculate items
+		if(ItemLookup.IsInitialized && !InventoryCalcuated)
+		{
+			CalculateEquipment();
+			InventoryCalcuated = true;
+			//ItemLookup.IsInitialized = true;
+		}
+
 		if(UserInterfaceLock.IsDragging && !IsPerformingEquipmentUpdate)
 		{
 			IsPerformingEquipmentUpdate = true;
@@ -116,6 +134,9 @@ public class playerInventory : MonoBehaviour
 		{
 			Debug.Log("FingerSlot4");
 		}
+
+		StatsIndicator.text = "Armor: " + equipmentProperties.Armor.ToString() + "\n";
+		StatsIndicator.text += "Damage: " + equipmentProperties.Physical.ToString();
 		UserInterfaceLock.CharacterReference.Player.CalculateStats(equipmentProperties);
 		
 	}

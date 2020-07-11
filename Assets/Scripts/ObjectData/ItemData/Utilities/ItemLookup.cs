@@ -13,10 +13,13 @@ namespace ObjectData.ItemData.Utilities
         // This will need to be replaced by database entries in the future
         public static ItemModel MasterList { get; set;}
 
+        public static bool IsInitialized { get; set; } = false;
+
         public static void InitializeItemData()
         {
             JObject data = JSONUtilities.LoadJSON(path + file);
             MasterList = data.ToObject<ItemModel>();
+            IsInitialized = true;
         }
 
         public static Item FindItem(string name)

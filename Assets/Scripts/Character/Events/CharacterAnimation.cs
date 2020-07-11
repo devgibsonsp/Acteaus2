@@ -65,7 +65,6 @@ public class CharacterAnimation : MonoBehaviour
         {
             Anim.SetBool("isTakingDamage",false);
             Anim.SetBool("isBlocking",false);
-
         }
         
     }

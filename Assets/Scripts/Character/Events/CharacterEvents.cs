@@ -108,6 +108,9 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
         AnimationEvents = gameObject.GetComponent<CharacterAnimation>();
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Anim = gameObject.GetComponent<Animator>();
+
+        // Not entirely sure this is necessary  but given that this is a shared component using a static value I am taking
+        // a precaution
         if (!isNPC && !photonView.IsMine)
         {
             return;

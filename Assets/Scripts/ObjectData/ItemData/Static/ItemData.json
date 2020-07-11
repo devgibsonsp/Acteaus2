@@ -41,9 +41,9 @@
             "SlotType": "Weapon",
             "Rarity": 0,
             "Requirement": {
-                "Level": 2,
+                "Level": 1,
                 "Strength": 0,
-                "Dexterity": 2,
+                "Dexterity": 1,
                 "Vitality": 1,
                 "Wisdom": 0,
                 "Intellect": 1
