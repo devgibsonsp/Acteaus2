@@ -169,6 +169,74 @@
                 "block": 2
             },
             "Value": 5
+        },
+        {
+            "Name": "Mystic Plate Mail",
+            "Description": "Strange armor pulsing with energy",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 0,
+                "Strength": 0,
+                "Dexterity": 0,
+                "Vitality": 0,
+                "Wisdom": 0,
+                "Intellect": 0
+            },
+            "Properties": {
+                "Physical": 0,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 2,
+                "block": 2
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Mystic Helm",
+            "Description": "Strange helm pulsing with energy",
+            "Type": "Helm",
+            "SlotType": "Helm",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 0,
+                "Strength": 0,
+                "Dexterity": 0,
+                "Vitality": 0,
+                "Wisdom": 0,
+                "Intellect": 0
+            },
+            "Properties": {
+                "Physical": 0,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 2,
+                "block": 2
+            },
+            "Value": 5
         }
     ]
 }
