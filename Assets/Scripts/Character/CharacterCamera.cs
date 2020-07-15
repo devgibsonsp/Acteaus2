@@ -9,7 +9,7 @@ public class CharacterCamera : MonoBehaviourPunCallbacks {
     private Vector3 Offset;
 
     [SerializeField]
-    private const float X_OFFSET = 36.5f;
+    private const float X_OFFSET = 35f;
 
     [SerializeField]
     private const float Y_OFFSET = 43f;
