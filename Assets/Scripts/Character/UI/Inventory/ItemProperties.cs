@@ -4,42 +4,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-using ObjectData.itemData.Models;
+using ObjectData.ItemData.Models;
+using ObjectData.ItemData.Utilities;
+using UI;
+public class ItemProperties : MonoBehaviour, IBeginDragHandler, IEndDragHandler
+{
 
-public class ItemProperties : MonoBehaviour {
-
-
-	public ItemModel Item { get; set; }
-
-
-	public Vector3 offset;
+	public Item Item { get; set; }
 	public bool isMerchantGood;
 
 	private bool merchantGoodBeingDragged;
-
+	private Vector3 offset;
 	private GameObject tooltip;
 	private Canvas tooltipCanvas;
 	private GameObject inventory;
-	private playerInventory invReference;
+	//private playerInventory invReference;
 
+	// This all needs to be majorly cleaned up
 
+	private RectTransform tooltipRect;
+	private Vector2 tooltipSize;
 
 
 	void Start() {
 
-		Item = new ItemModel();
+		offset = new Vector3(150f,35f,0f);
+		Item = ItemLookup.FindItem(this.gameObject.name);
 
 		tooltip = GameObject.Find("ToolTip");
 		tooltipCanvas = tooltip.GetComponent<Canvas>();
 		inventory = GameObject.Find("Inventory");
 
 		merchantGoodBeingDragged = false;
-
-        EventTrigger trigger = GetComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.Drag;
-        entry.callback.AddListener((data) => { dragEvent((PointerEventData)data); });
-        trigger.triggers.Add(entry);
+		
+		tooltipRect =  tooltip.GetComponent<RectTransform>();
+		tooltipSize = tooltipRect.sizeDelta;
+        //EventTrigger trigger = GetComponent<EventTrigger>();
+        //EventTrigger.Entry entry = new EventTrigger.Entry();
+        //entry.eventID = EventTriggerType.Drag;
+        //entry.callback.AddListener((data) => { dragEvent((PointerEventData)data); });
+        //trigger.triggers.Add(entry);
 		
 	}
 
@@ -47,60 +51,132 @@ public class ItemProperties : MonoBehaviour {
 
 	
 
-	public void dragEvent(PointerEventData data){
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+		UserInterfaceLock.DraggedItem = this;
+		UserInterfaceLock.IsDragging = true;
+		Debug.Log("Smap");
+    }
 
-		// If the item is worth more gold than the player possesses...
-		if(isMerchantGood && Item.ItemValue > inventory.GetComponent<playerInventory>().getGoldAmount()){
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(true);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(false);
-
-		}
-		else if(isMerchantGood){
-			merchantGoodBeingDragged = true;
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(false);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(true);
-		} else if(!isMerchantGood) {
-			merchantGoodBeingDragged = false;
-			inventory.GetComponent<playerInventory>().setNotEnoughMoneyToBuy(false);
-			inventory.GetComponent<playerInventory>().setMerchantGoodBeingBought(false);
-		}
-	}
-	public void test2(){
-
-		Debug.Log("dropped");
-	}
+    public void OnEndDrag(PointerEventData eventData)
+    {
+		UserInterfaceLock.IsDragging = false;
+ 		Debug.Log("ddddddddddd");
+    }
 
 	public void enableTooltip() {
-		//tooltip.SetActive(true);
 		tooltipCanvas.enabled = true;
 		tooltip.transform.position = Input.mousePosition + offset;
-		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item.ItemName;
+		tooltip.transform.GetChild(0).GetComponent<Text>().text = Item.Name;
 		tooltip.transform.GetChild(1).GetComponent<Text>().text = Item.Description;
 		tooltip.transform.GetChild(2).GetComponent<Text>().text = "Type: " + Item.Type;
-		tooltip.transform.GetChild(3).GetComponent<Text>().text = "Level Requirement: " + Item.LevelRequirement.ToString();
-		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Damage: " + Item.PhysicalDamage.ToString();
-		tooltip.transform.GetChild(5).GetComponent<Text>().text = "Value: "+ Item.ItemValue.ToString() + " Gold";
+		ItemSpecificInformation();
+		tooltip.transform.GetChild(4).GetComponent<Text>().text = "Value: "+ Item.Value + " Gold";
+		RequirementsInformation();
 	}
+
+	private void RequirementsInformation()
+	{
+		string itemReq = "";
+		bool HasRequirements = false;
+		int size = 0;
+		tooltipRect.sizeDelta = tooltipSize;
+
+		if(Item.Requirement.Level > 0)
+		{
+			
+			//Debug.Log(tooltip.GetComponent<RectTransform>().rect.bottom);
+			itemReq += "Level Requirement: " + Item.Requirement.Level;
+			HasRequirements = true;
+		}
+		if(Item.Requirement.Strength > 0)
+		{
+			if(HasRequirements)
+			{
+				itemReq += "\n";
+			}
+			itemReq += "Strength Requirement: " + Item.Requirement.Strength;
+			HasRequirements = true;
+			size += 12;
+		}
+		if(Item.Requirement.Dexterity > 0)
+		{
+			if(HasRequirements)
+			{
+				itemReq += "\n";
+			}
+			itemReq += "Dexterity Requirement: " + Item.Requirement.Dexterity;
+			HasRequirements = true;
+			size += 12;
+		}
+		if(Item.Requirement.Intellect > 0)
+		{
+			if(HasRequirements)
+			{
+				itemReq += "\n";
+			}
+			itemReq += "Intellect Requirement: " + Item.Requirement.Intellect;
+			HasRequirements = true;
+			size += 12;
+		}
+		if(Item.Requirement.Vitality > 0)
+		{
+			if(HasRequirements)
+			{
+				itemReq += "\n";
+			}
+			itemReq += "Vitality Requirement: " + Item.Requirement.Vitality;
+			HasRequirements = true;
+			size += 12;
+		}
+		if(Item.Requirement.Wisdom > 0)
+		{
+			if(HasRequirements)
+			{
+				itemReq += "\n";
+			}
+			itemReq += "Wisdom Requirement: " + Item.Requirement.Wisdom;
+			HasRequirements = true;
+			size += 12;
+		}
+
+		tooltipRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,tooltipSize.y+size);// = new Vector2(tooltipSize.x, tooltipSize.y+size);
+		
+
+		tooltip.transform.GetChild(5).GetComponent<Text>().text = itemReq;
+
+	}
+
+
+	private void ItemSpecificInformation()
+	{
+		if(Item.SlotType == "Weapon")
+		{
+			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Damage: " + Item.Properties.Physical;
+		}
+		else if(Item.SlotType == "Shield")
+		{
+			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Armor")
+		{
+			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Armor")
+		{
+			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
+		}
+		else if(Item.SlotType == "Consumable")
+		{
+			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Consumable";
+		}
+	}
+
 
 	public void disableTooltip() {
 		//tooltip.SetActive(false);
 		tooltipCanvas.enabled = false;
 	}
 
-	public int getArmor() {
-		return Item.Armor;
-	}
-
-	public bool getIsMerchantGood(){
-		return isMerchantGood;
-	}
-
-	public void setIsMerchantGood(bool b){
-		isMerchantGood = b;
-	}
-
-	public int getItemValue(){
-		return Item.ItemValue;
-	}
 }
 

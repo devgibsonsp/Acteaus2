@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
+using UI;
 public class CharacterEvents : MonoBehaviourPunCallbacks
 {
 
@@ -107,6 +108,15 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
         AnimationEvents = gameObject.GetComponent<CharacterAnimation>();
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Anim = gameObject.GetComponent<Animator>();
+
+        // Not entirely sure this is necessary  but given that this is a shared component using a static value I am taking
+        // a precaution
+        if (!isNPC && !photonView.IsMine)
+        {
+            return;
+        }
+        // Setting the reference to this character specific to the client
+        UserInterfaceLock.CharacterReference = PlayerStatistics;
     }
 
     ///<summary>Calculate Player attack</summary>
@@ -193,27 +203,9 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
 
                 
                 if (Input.GetMouseButtonDown(0)) {
-                    RaycastHit hit;
-                    if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out hit, 100)) 
+                    if(!UserInterfaceLock.IsLocked)
                     {
-                        if(hit.transform.tag == "attackable")
-                        {
-                            Debug.Log("attack follow");
-                            target = hit.transform;
-                            TargetStatistics = target.GetComponent<CharacterStatistics>();
-                            TargetAnimationEvents = target.GetComponent<CharacterAnimation>();
-                            IsFollowing = true;
-                            Agent.stoppingDistance = ACTION_STOP_DIST;
-                        }
-                        else 
-                        {
-                            AnimationEvents.PlayerAttackAnimation(rnd, false);
-                            IsFollowing = false;
-                            MovementEvents.CharacterMove(hit, Cam);
-                            Agent.stoppingDistance = NORMAL_STOP_DIST;
-                        }
-                        
-
+                        PlayerMoveOrder();
                     }
                     
                 }
@@ -226,4 +218,31 @@ public class CharacterEvents : MonoBehaviourPunCallbacks
 
 
     } // END Update
+
+
+    public void PlayerMoveOrder()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out hit, 100)) 
+        {
+            if(hit.transform.tag == "attackable")
+            {
+                Debug.Log("attack follow");
+                target = hit.transform;
+                TargetStatistics = target.GetComponent<CharacterStatistics>();
+                TargetAnimationEvents = target.GetComponent<CharacterAnimation>();
+                IsFollowing = true;
+                Agent.stoppingDistance = ACTION_STOP_DIST;
+            }
+            else 
+            {
+                AnimationEvents.PlayerAttackAnimation(rnd, false);
+                IsFollowing = false;
+                MovementEvents.CharacterMove(hit, Cam);
+                Agent.stoppingDistance = NORMAL_STOP_DIST;
+            }
+            
+
+        }
+    }
 }

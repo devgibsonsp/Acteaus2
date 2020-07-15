@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SANDBOX.unity
     guid: 26ce4fdca657ac34b9f89c5a5293450f
   - enabled: 0
-    path: Assets/Scenes/Server.unity
-    guid: ebfc94eeb64965a489bb6a58b39961c6
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: e0064809de1a4884082b307354db2e99
+  - enabled: 0
     path: Assets/Scenes/Launcher.unity
     guid: b337809e4bd0cf34d99212a93c8b3e2d
   - enabled: 1

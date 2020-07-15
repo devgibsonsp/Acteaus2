@@ -1,6 +1,8 @@
 using ObjectData.CharacterData.Models;
 using ObjectData.CharacterData.Types;
 
+using ObjectData.ItemData.Models;
+
 namespace ObjectData.CharacterData
 {
     public class Character
@@ -104,16 +106,17 @@ namespace ObjectData.CharacterData
             }
 
             // Omnipotent call to set stats (can be used to reset stats on adjustment?)
-            CalculateStats();
+            Properties empty = new Properties();
+            CalculateStats(empty);
         }
 
-        private void CalculateStats()
+        public void CalculateStats(Properties EquipmentModifiers)
         {
             switch(CharClass)
             {
                 case CharacterType.Warrior: 
                     ModifierStats.AttackSpeed     = (CoreStats.Dexterity/3) + 1;
-                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /2) + Level     + 2;
+                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /2) + Level     + 2 + EquipmentModifiers.Physical;
                     ModifierStats.BaseSpellDamage = (CoreStats.Wisdom   /3) + (Level/2) + 1;
                     ModifierStats.CounterChance   = (CoreStats.Dexterity/2) + 2;
                     ModifierStats.DodgeChance     = (CoreStats.Dexterity/3) + 1;
@@ -123,7 +126,7 @@ namespace ObjectData.CharacterData
                     break;
                 case CharacterType.Rogue: 
                     ModifierStats.AttackSpeed     = (CoreStats.Dexterity/2) + 3;
-                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /2) + Level + 1;
+                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /2) + Level + 1 + EquipmentModifiers.Physical;
                     ModifierStats.BaseSpellDamage = (CoreStats.Wisdom   /3) + Level + 1;
                     ModifierStats.CounterChance   = (CoreStats.Dexterity/2) + 2;
                     ModifierStats.DodgeChance     = (CoreStats.Dexterity/2) + 2;
@@ -133,7 +136,7 @@ namespace ObjectData.CharacterData
                     break;
                 case CharacterType.Wizard: 
                     ModifierStats.AttackSpeed     = (CoreStats.Dexterity/3) + 1;
-                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /3) + Level + 1;
+                    ModifierStats.BaseMeleeDamage = (CoreStats.Strength /3) + Level + 1 + EquipmentModifiers.Physical;
                     ModifierStats.BaseSpellDamage = (CoreStats.Wisdom   /2) + Level + 2;
                     ModifierStats.CounterChance   = (CoreStats.Dexterity/3) + 1;
                     ModifierStats.DodgeChance     = (CoreStats.Dexterity/3) + 1;
@@ -145,8 +148,8 @@ namespace ObjectData.CharacterData
 
             BarStats.Health           = BarStats._HealthMax;
             BarStats.Magic            = BarStats._MagicMax;
-            ModifierStats.Armor       = 0;
-            ModifierStats.BlockChance = 30;
+            ModifierStats.Armor       = EquipmentModifiers.Armor;
+            ModifierStats.BlockChance = 30; // shield + some stat?
         }
 
     }

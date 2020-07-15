@@ -71,3 +71,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /Builds/*
+
+# Adding rule to ignore NuGet packages (should be restored manually)
+/[Aa]ssets/[Pp]ackages/*
