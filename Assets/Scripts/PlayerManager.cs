@@ -13,9 +13,6 @@ using Photon.Pun.Demo.PunBasics;
 public class PlayerManager : MonoBehaviourPunCallbacks, Photon.Pun.IPunObservable
 {
 
-
-
-
     [Tooltip("The current Health of our player")]
     public float Health = 1f;
 
