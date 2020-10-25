@@ -1,44 +1,10 @@
 {
     "Items": [
         {
-            "Name": "Blade of Acteaus",
-            "Description": "This is a cool blade",
-            "Type": "Sword",
-            "SlotType": "Weapon",
-            "Rarity": 4,
-            "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 21,
-                "Vitality": 0,
-                "Wisdom": 0,
-                "Intellect": 0
-            },
-            "Properties": {
-                "Physical": 135,
-                "Holy": 0,
-                "Unholy": 0,
-                "Electric": 0,
-                "Fire": 0,
-                "Frost": 0,
-                "Poision": 0,
-                "All": 0,
-                "HealthSteal": 0,
-                "MagicSteal": 0,
-                "HealthRegen": 0,
-                "MagicRegen": 0,
-                "Curse": 0,
-                "Uncurse": 0,
-                "Armor": 0,
-                "block": 0
-            },
-            "Value": 5
-        },
-        {
-            "Name": "Wooden Club",
-            "Description": "Just a hunk of wood",
-            "Type": "Blunt",
-            "SlotType": "Weapon",
+            "Name": "Ancient Helm",
+            "Description": "this is Ancient Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
             "Rarity": 0,
             "Requirement": {
                 "Level": 1,
@@ -69,21 +35,21 @@
             "Value": 5
         },
         {
-            "Name": "Minor Health Potion",
-            "Description": "Should be helpful for some small wounds",
-            "Type": "Consumable",
-            "SlotType": "Consumable",
-            "Rarity": 4,
+            "Name": "Bone Crown",
+            "Description": "this is Bone Crown",
+            "Type": "Helm",
+            "SlotType": "Helm",
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 20,
-                "Vitality": 0,
-                "Wisdom": 1,
-                "Intellect": 0
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -103,21 +69,21 @@
             "Value": 5
         },
         {
-            "Name": "Minor Magic Potion",
-            "Description": "A small boost to your magic pool",
-            "Type": "Consumable",
-            "SlotType": "Consumable",
-            "Rarity": 4,
+            "Name": "Copper Helm",
+            "Description": "this is Copper Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 20,
-                "Vitality": 0,
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -137,21 +103,21 @@
             "Value": 5
         },
         {
-            "Name": "Wooden Shield",
-            "Description": "A few planks of wood bound together in an iron frame",
-            "Type": "Shield",
-            "SlotType": "Shield",
+            "Name": "Demonic Helm",
+            "Description": "this is Demonic Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
             "Rarity": 0,
             "Requirement": {
-                "Level": 0,
+                "Level": 1,
                 "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 0,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -165,27 +131,27 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
         {
-            "Name": "Mystic Plate Mail",
-            "Description": "Strange armor pulsing with energy",
-            "Type": "Armor",
-            "SlotType": "Armor",
+            "Name": "Fire Helm",
+            "Description": "this is Fire Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
             "Rarity": 0,
             "Requirement": {
-                "Level": 0,
+                "Level": 1,
                 "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 0,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -199,27 +165,95 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Iron Helm",
+            "Description": "this is Iron Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Magic Helm",
+            "Description": "this is Magic Helm",
+            "Type": "Helm",
+            "SlotType": "Helm",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         },
         {
             "Name": "Mystic Helm",
-            "Description": "Strange helm pulsing with energy",
+            "Description": "this is Mystic Helm",
             "Type": "Helm",
             "SlotType": "Helm",
             "Rarity": 0,
             "Requirement": {
-                "Level": 0,
+                "Level": 1,
                 "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 0,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -233,8 +267,8 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         }

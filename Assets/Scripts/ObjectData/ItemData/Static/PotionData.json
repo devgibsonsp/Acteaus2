@@ -1,21 +1,21 @@
 {
     "Items": [
         {
-            "Name": "Blade of Acteaus",
-            "Description": "This is a cool blade",
-            "Type": "Sword",
-            "SlotType": "Weapon",
-            "Rarity": 4,
+            "Name": "Greater Health Potion",
+            "Description": "this is Greater Health Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 21,
-                "Vitality": 0,
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -35,10 +35,146 @@
             "Value": 5
         },
         {
-            "Name": "Wooden Club",
-            "Description": "Just a hunk of wood",
-            "Type": "Blunt",
-            "SlotType": "Weapon",
+            "Name": "Greater Magic Potion",
+            "Description": "this is Greater Magic Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Greater Restoration Potion",
+            "Description": "this is Greater Restoration Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Health Potion",
+            "Description": "this is Health Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Magic Potion",
+            "Description": "this is Magic Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Restoration Potion",
+            "Description": "this is Restoration Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
             "Rarity": 0,
             "Requirement": {
                 "Level": 1,
@@ -70,20 +206,20 @@
         },
         {
             "Name": "Minor Health Potion",
-            "Description": "Should be helpful for some small wounds",
+            "Description": "this is Minor Health Potion",
             "Type": "Consumable",
             "SlotType": "Consumable",
-            "Rarity": 4,
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 20,
-                "Vitality": 0,
-                "Wisdom": 1,
-                "Intellect": 0
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -104,20 +240,20 @@
         },
         {
             "Name": "Minor Magic Potion",
-            "Description": "A small boost to your magic pool",
+            "Description": "this is Minor Magic Potion",
             "Type": "Consumable",
             "SlotType": "Consumable",
-            "Rarity": 4,
+            "Rarity": 0,
             "Requirement": {
-                "Level": 40,
-                "Strength": 20,
-                "Dexterity": 20,
-                "Vitality": 0,
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 135,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -137,21 +273,21 @@
             "Value": 5
         },
         {
-            "Name": "Wooden Shield",
-            "Description": "A few planks of wood bound together in an iron frame",
-            "Type": "Shield",
-            "SlotType": "Shield",
+            "Name": "Minor Restoration Potion",
+            "Description": "this is Minor Restoration Potion",
+            "Type": "Consumable",
+            "SlotType": "Consumable",
             "Rarity": 0,
             "Requirement": {
-                "Level": 0,
+                "Level": 1,
                 "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
                 "Wisdom": 0,
-                "Intellect": 0
+                "Intellect": 1
             },
             "Properties": {
-                "Physical": 0,
+                "Physical": 1,
                 "Holy": 0,
                 "Unholy": 0,
                 "Electric": 0,
@@ -165,76 +301,8 @@
                 "MagicRegen": 0,
                 "Curse": 0,
                 "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
-            },
-            "Value": 5
-        },
-        {
-            "Name": "Mystic Plate Mail",
-            "Description": "Strange armor pulsing with energy",
-            "Type": "Armor",
-            "SlotType": "Armor",
-            "Rarity": 0,
-            "Requirement": {
-                "Level": 0,
-                "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
-                "Wisdom": 0,
-                "Intellect": 0
-            },
-            "Properties": {
-                "Physical": 0,
-                "Holy": 0,
-                "Unholy": 0,
-                "Electric": 0,
-                "Fire": 0,
-                "Frost": 0,
-                "Poision": 0,
-                "All": 0,
-                "HealthSteal": 0,
-                "MagicSteal": 0,
-                "HealthRegen": 0,
-                "MagicRegen": 0,
-                "Curse": 0,
-                "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
-            },
-            "Value": 5
-        },
-        {
-            "Name": "Mystic Helm",
-            "Description": "Strange helm pulsing with energy",
-            "Type": "Helm",
-            "SlotType": "Helm",
-            "Rarity": 0,
-            "Requirement": {
-                "Level": 0,
-                "Strength": 0,
-                "Dexterity": 0,
-                "Vitality": 0,
-                "Wisdom": 0,
-                "Intellect": 0
-            },
-            "Properties": {
-                "Physical": 0,
-                "Holy": 0,
-                "Unholy": 0,
-                "Electric": 0,
-                "Fire": 0,
-                "Frost": 0,
-                "Poision": 0,
-                "All": 0,
-                "HealthSteal": 0,
-                "MagicSteal": 0,
-                "HealthRegen": 0,
-                "MagicRegen": 0,
-                "Curse": 0,
-                "Uncurse": 0,
-                "Armor": 2,
-                "block": 2
+                "Armor": 0,
+                "block": 0
             },
             "Value": 5
         }

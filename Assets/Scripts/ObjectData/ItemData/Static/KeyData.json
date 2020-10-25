@@ -1,0 +1,140 @@
+{
+    "Items": [
+        {
+            "Name": "Copper Key",
+            "Description": "this is Copper Key",
+            "Type": "Key",
+            "SlotType": "Key",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Gold Key",
+            "Description": "this is Gold Key",
+            "Type": "Key",
+            "SlotType": "Key",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Iron Key",
+            "Description": "this is Iron Key",
+            "Type": "Key",
+            "SlotType": "Key",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Silver Key",
+            "Description": "this is Silver Key",
+            "Type": "Key",
+            "SlotType": "Key",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        }
+    ]
+}
