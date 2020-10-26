@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using ObjectData.ItemData.Utilities;
 using ObjectData.ItemData.Models;
 using UI;
+using CharacterNS;
 
 public class playerInventory : MonoBehaviour 
 {
@@ -14,6 +15,9 @@ public class playerInventory : MonoBehaviour
 	// calculated then this could lead to players getting killed as soon as they log in
 	// There will need to be a few seconds of player immunity while the player's data is being loaded. ***
 
+	// *** Need to create unique player objects and store the player's identity somewhere so that
+	// the find script only works for the player's gameobject ***
+
 	private InventorySlotModel inventorySlots;
 
 	private bool IsPerformingEquipmentUpdate { get; set; } = false;
@@ -21,6 +25,10 @@ public class playerInventory : MonoBehaviour
 	private Text StatsIndicator { get; set; }
 
 	private bool InventoryCalcuated { get; set; } = false;
+
+	private bool CharacterLoaded { get; set; } = false;
+
+	private GameObject HeadRef {get; set; }
 
 
 	// Use this for initialization
@@ -47,12 +55,24 @@ public class playerInventory : MonoBehaviour
 			FingerSlot3 = GameObject.Find("Finger3Slot"),
 			FingerSlot4 = GameObject.Find("Finger4Slot")
 		};
+		//HeadRef = new GameObject();
+		//HeadRef = CharacterObject.Ref.transform.Find("Head").gameObject;
+		
+		//GameObject.Find("PlayerV11(Clone)").transform.Find("Head").gameObject;
 		
 		
 	}
 
 	void Update()
 	{
+
+		if(CharacterObject.RefSet && !CharacterLoaded)
+		{
+			CharacterLoaded = true;
+			HeadRef = CharacterObject.Ref;//.transform.Find("Head").gameObject;
+			HeadRef = CharacterObject.Ref.transform.Find("PlayerBody/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Neck/Bip001 Head/Bip001 HeadNub").gameObject;
+		}
+
 		// If the item master list is initialized, flip the flag and calculate items
 		if(ItemLookup.IsInitialized && !InventoryCalcuated)
 		{
@@ -69,7 +89,25 @@ public class playerInventory : MonoBehaviour
 		{
 			IsPerformingEquipmentUpdate = false;
 			CalculateEquipment();
+			//SetEquipmentModels();
 		}
+	}
+
+	private void SetEquipmentModels()
+	{
+		// Whenever equipment is moved, detect the models on the player
+		// IPORTANT: This must sync with MP
+
+		// Detect Helmet Changes
+		if(inventorySlots.HeadSlot.transform.childCount > 0)
+		{
+			// reference to the helmet
+			HeadRef.transform.Find(inventorySlots.HeadSlot.transform.GetChild(0).name).GetComponent<MeshRenderer>().enabled = true;
+			//inventorySlots.HeadSlot.transform.FindChild()
+			//inventorySlots.HeadSlot.transform.GetChild(0).name;
+			Debug.Log("HeadSlot");
+		}
+
 	}
 
 	private void CalculateEquipment()

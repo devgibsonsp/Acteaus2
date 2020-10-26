@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
+using CharacterNS;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -34,8 +35,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PlayerManager.LocalPlayerInstance == null)
             {
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+
                 // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(1700f, 6f, -4600f), Quaternion.identity, 0);
+                // Storing a hard reference to the character object
+                CharacterObject.Ref = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(1700f, 6f, -4600f), Quaternion.identity, 0) as GameObject;
+                CharacterObject.RefSet = true;
             }
             else
             {
