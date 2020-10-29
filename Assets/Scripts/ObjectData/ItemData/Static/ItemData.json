@@ -37,7 +37,7 @@
         {
             "Name": "Wooden Club",
             "Description": "Just a hunk of wood",
-            "Type": "Club",
+            "Type": "Blunt",
             "SlotType": "Weapon",
             "Rarity": 0,
             "Requirement": {

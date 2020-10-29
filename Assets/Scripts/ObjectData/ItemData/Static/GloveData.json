@@ -1,0 +1,247 @@
+{
+    "Items": [
+        {
+            "Name": "Leather Gloves",
+            "Description": "this is Leather Gloves",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Mage Gloves",
+            "Description": "this is Mage Gloves",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+
+        {
+            "Name": "Magic Gloves",
+            "Description": "this is Magic Gloves",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+
+        {
+            "Name": "Mystic Gauntlets",
+            "Description": "this is Mystic Gauntlets",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+
+        {
+            "Name": "Mystic Gloves",
+            "Description": "this is Mystic Gloves",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+
+        {
+            "Name": "Steel Gauntlets",
+            "Description": "this is Steel Gauntlets",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+
+        {
+            "Name": "Studded Leather Gloves",
+            "Description": "this is Studded Leather Gloves",
+            "Type": "Gloves",
+            "SlotType": "Gloves",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        }
+    ]
+}

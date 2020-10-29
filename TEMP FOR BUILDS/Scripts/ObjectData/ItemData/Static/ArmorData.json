@@ -1,0 +1,242 @@
+{
+    "Items": [
+        {
+            "Name": "Full Plate Mail",
+            "Description": "this is Full Plate Mail",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Leather Armor",
+            "Description": "this is Leather Armor",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Light Plate Mail",
+            "Description": "this is Light Plate Mail",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Mage Robe",
+            "Description": "this is Mage Robe",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Mystic Plate Mail",
+            "Description": "this is Mystic Plate Mail",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Studden Leather Armor",
+            "Description": "this is Studden Leather Armor",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        },
+        {
+            "Name": "Xollatos Plate Mail",
+            "Description": "this is Xollatos Plate Mail",
+            "Type": "Armor",
+            "SlotType": "Armor",
+            "Rarity": 0,
+            "Requirement": {
+                "Level": 1,
+                "Strength": 0,
+                "Dexterity": 1,
+                "Vitality": 1,
+                "Wisdom": 0,
+                "Intellect": 1
+            },
+            "Properties": {
+                "Physical": 1,
+                "Holy": 0,
+                "Unholy": 0,
+                "Electric": 0,
+                "Fire": 0,
+                "Frost": 0,
+                "Poision": 0,
+                "All": 0,
+                "HealthSteal": 0,
+                "MagicSteal": 0,
+                "HealthRegen": 0,
+                "MagicRegen": 0,
+                "Curse": 0,
+                "Uncurse": 0,
+                "Armor": 0,
+                "block": 0
+            },
+            "Value": 5
+        }
+    ]
+}
