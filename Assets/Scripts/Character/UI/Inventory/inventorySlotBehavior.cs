@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UI;
-public class inventorySlotBehavior : MonoBehaviour
+public class InventorySlotBehavior : MonoBehaviour
 {
 
 	public string SlotType;
 
 	private bool itemHasBeenUpdatedAlready;
-	private playerInventory inventory;
+	private PlayerInventory inventory;
 	private Canvas inventoryCanvas;
 
 	private bool allSlotsSetToDragOnly;
@@ -20,7 +20,7 @@ public class inventorySlotBehavior : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 
-		inventory = GameObject.Find("Inventory").GetComponent<playerInventory>();
+		inventory = GameObject.Find("Inventory").GetComponent<PlayerInventory>();
 		inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 		itemHasBeenUpdatedAlready = false;
 		allSlotsSetToDragOnly = false;

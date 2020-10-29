@@ -9,8 +9,7 @@ using UI;
 using CharacterNS;
 using Photon.Pun;
 
-public class playerInventory : MonoBehaviourPunCallbacks, IPunObservable
-
+public class PlayerInventory : MonoBehaviourPunCallbacks, IPunObservable
 {
 
 	// *** Leaving a note here for future that if there is a split second that items aren't
