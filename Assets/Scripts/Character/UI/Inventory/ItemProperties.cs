@@ -162,10 +162,6 @@ public class ItemProperties : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 		{
 			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
 		}
-		else if(Item.SlotType == "Armor")
-		{
-			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Armor: " + Item.Properties.Armor;
-		}
 		else if(Item.SlotType == "Consumable")
 		{
 			tooltip.transform.GetChild(3).GetComponent<Text>().text = "Consumable";
